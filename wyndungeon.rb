@@ -199,7 +199,7 @@ def troll_turn(human_health, character_name)
   puts "======TROLL TURN====="
   puts "Troll ATTACKS!"
   2.times { sleep 1; print "." }
-  puts ""
+  space
   human_health = human_health - troll_attack
   puts "Troll does #{troll_attack} damage."
   puts "#{character_name}'s health is #{human_health}"
@@ -211,12 +211,17 @@ def personal_turn(troll_health, character_name, voice)
   puts "======#{character_name.upcase}'s' TURN====="
   puts "#{character_name} ATTACKS!"
   2.times { sleep 1; print "." }
-  puts ""
+  space
   troll_health = troll_health - personal_attack
   puts "#{character_name} does #{personal_attack} damage."
   puts "Troll health is #{troll_health}."
   return troll_health
 end
+
+def space
+  puts ""
+end
+
 
 troll_health = 70
 human_health = 100
@@ -259,17 +264,17 @@ human_health = 100
 
   puts "You are walking through Wynwood late at night and notice a light shining through some windows."  
   sleep 2
-  puts ""
+  space
   puts "You walk over to further investigate and realize that there is some strange activity in Wyncode." 
-  puts ""
+  space
   puts "You step inside and notice there is a split in the path." 
   sleep 3
-  puts ""
+  space
   puts  "On the left you here faint voices and on the right you smell what seems to be fried chicken."  
   sleep 2
-  puts ""
+  space
   puts  "Do you go (left) to voices or (right) to the fried chicken?"
-  puts ""
+  space
   
   direction = gets.chomp.to_s.downcase
 
@@ -362,7 +367,7 @@ human_health = 100
       `say -v "Fred" "If you want to pass you must repeat the numbers I am about to say.
        Each incorrect guess will lower your health. Listen carefully. #{spoken_numbers}"` 
 
-      puts ""
+      space
       puts "What numbers did you hear?"
 
       guess = gets.chomp.to_s
