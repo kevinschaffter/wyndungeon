@@ -160,8 +160,8 @@ end
 troll_health = 100
 human_health = 100
 
-def set_health(character, human_health)
-  if character == "1"
+def set_health(input, human_health)
+  if input == "1"
     human_health = 70
   else
     human_health = 80
@@ -169,8 +169,8 @@ def set_health(character, human_health)
     human_health
 end
 
-def set_name(character)
-  if character == "1"
+def set_name(input)
+  if input == "1"
     character_name = "Mario"
   else
     character_name = "Lucy"
@@ -178,8 +178,8 @@ def set_name(character)
     character_name
 end
 
-def set_voice(character)
-  if character == "1"
+def set_voice(input)
+  if input == "1"
     voice = "Luca"
   else
     voice = "Kyoko"
@@ -223,6 +223,15 @@ def space
 end
 
 
+def input_require(input, option1, option2)
+  until input == option1 || input == option2
+    puts "Enter #{option1} or #{option2}"
+    input = gets.chomp.to_s.downcase
+  end
+  input
+end
+
+
 troll_health = 70
 human_health = 100
 
@@ -249,12 +258,14 @@ human_health = 100
 
   WynDungeon.new.select
 
-  character = gets.chomp
+  input = gets.chomp
 
-  human_health = set_health(character, human_health)
-  character_name = set_name(character) 
+  input_require(input, "1" , "2")
 
-  voice = set_voice(character)
+  human_health = set_health(input, human_health)
+  character_name = set_name(input) 
+
+  voice = set_voice(input)
 
   `say -v "#{voice}" "Hello #{name}, lets a go!"`
 
@@ -276,11 +287,13 @@ human_health = 100
   puts  "Do you go (left) to voices or (right) to the fried chicken?"
   space
   
-  direction = gets.chomp.to_s.downcase
+  input = gets.chomp.to_s.downcase
+
+  input_require(input, "right", "left")
 
   system "clear"
 
-  case direction
+  case input
 
   when "right"
     human_health += 10
@@ -316,9 +329,12 @@ human_health = 100
       puts "One of the trolls comes running towrads you."
       puts "Do you fight with the troll?"
       puts "(y) or (n)"
-      fight = gets.chomp
 
-      if fight == "y"
+      input = gets.chomp.downcase
+
+      input_require(input, "y", "n")
+
+      if input == "y"
 
         until troll_health <= 0 || human_health <= 0
 
