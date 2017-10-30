@@ -166,7 +166,7 @@ def set_health(character, human_health)
   else
     human_health = 80
   end
-  return human_health
+    human_health
 end
 
 def set_name(character)
@@ -175,7 +175,7 @@ def set_name(character)
   else
     character_name = "Lucy"
   end
-  return character_name
+    character_name
 end
 
 def set_voice(character)
@@ -184,7 +184,7 @@ def set_voice(character)
   else
     voice = "Kyoko"
   end
-  return voice
+   voice
 end
 
 def troll_attack
@@ -204,7 +204,7 @@ def troll_turn(human_health, character_name)
   puts "Troll does #{troll_attack} damage."
   puts "#{character_name}'s health is #{human_health}"
   `say -v "Daniel" "Ouch! Your health is now down to #{human_health}."`
-  return human_health
+   human_health
 end
 
 def personal_turn(troll_health, character_name, voice)
@@ -215,7 +215,7 @@ def personal_turn(troll_health, character_name, voice)
   troll_health = troll_health - personal_attack
   puts "#{character_name} does #{personal_attack} damage."
   puts "Troll health is #{troll_health}."
-  return troll_health
+   troll_health
 end
 
 def space
