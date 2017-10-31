@@ -173,7 +173,7 @@ def set_name(input)
   if input == "1"
     character_name = "Mario"
   else
-    character_name = "Lucy"
+    character_name = "Peach"
   end
     character_name
 end
@@ -221,7 +221,6 @@ end
 def space
   puts ""
 end
-
 
 def input_require(input, option1, option2)
   until input == option1 || input == option2
@@ -305,11 +304,9 @@ human_health = 100
 
     sleep 2
     puts "You continue down the path and notice an enormous chicken roasting over an open fire."
-    sleep 3
+    sleep 2
     `say -v "#{voice}" "My god. This chicken looks amazing! I must take a little bite."`
-    sleep 1
     `say -v "Daniel" "#{character_name} heads towards the chicken and takes a rediculously big bite."`
-    sleep 1
     `say -v "#{voice}" "Wow. This is the best chicken I have ever had."`
 
     system "clear"
@@ -347,8 +344,9 @@ human_health = 100
       if human_health <= 0 
         puts "Troll won"
         puts "Would you like to play again?"
-        again = gets.chomp
-        unless again == "y"
+        input = gets.chomp
+        input_require(input, "y", "n")
+        unless input == "y"
           break
         end
       end
@@ -359,8 +357,9 @@ human_health = 100
         puts "YOU WON!!!!"
         `say -v "Daniel" "You Won! Congratulations. Now go eat your damn chicken."`
         puts "Would you like to play again?"
-        again = gets.chomp
-          unless again == "y"
+        input = gets.chomp
+        input_require(input, "y", "n")
+          unless input == "y"
           break
         end
       end
@@ -403,10 +402,11 @@ human_health = 100
       puts "YOU GUESSED IT! You walk into a room full of gold!"
       `say -v "Daniel" "You Won! Congratulations."`
       puts "Would you like to play again?"
-      again = gets.chomp
-        unless again == "y"
-          break
-        end
+      input = gets.chomp
+      input_require(input, "y", "n")
+      unless input == "y"
+        break
+      end
     end
 
   else
