@@ -196,25 +196,25 @@ def personal_attack
 end
 
 def troll_turn(human_health, character_name)
-  puts "======TROLL TURN====="
-  puts "Troll ATTACKS!"
+  puts "======TROLL TURN=====",
+       "Troll ATTACKS!"
   2.times { sleep 1; print "." }
   space
   human_health = human_health - troll_attack
-  puts "Troll does #{troll_attack} damage."
-  puts "#{character_name}'s health is #{human_health}"
+  puts "Troll does #{troll_attack} damage.",
+       "#{character_name}'s health is #{human_health}",
   `say -v "Daniel" "Ouch! Your health is now down to #{human_health}."`
    human_health
 end
 
 def personal_turn(troll_health, character_name, voice)
-  puts "======#{character_name.upcase}'s' TURN====="
-  puts "#{character_name} ATTACKS!"
+  puts "======#{character_name.upcase}'s' TURN=====",
+       "#{character_name} ATTACKS!"
   2.times { sleep 1; print "." }
   space
   troll_health = troll_health - personal_attack
-  puts "#{character_name} does #{personal_attack} damage."
-  puts "Troll health is #{troll_health}."
+  puts "#{character_name} does #{personal_attack} damage.",
+       "Troll health is #{troll_health}."
    troll_health
 end
 
@@ -297,7 +297,7 @@ human_health = 100
   when "right"
     human_health += 10
     puts "You are starving and can't help but follow the smell of chicken."
-    puts " "
+    space
 
       `say -v "#{voice}" "I must follow the smell of the chicken!"`
 
@@ -323,9 +323,9 @@ human_health = 100
 
       system "clear"
 
-      puts "One of the trolls comes running towrads you."
-      puts "Do you fight with the troll?"
-      puts "(y) or (n)"
+      puts "One of the trolls comes running towards you.",
+           "Do you fight with the troll?",
+           "(y) or (n)"
 
       input = gets.chomp.downcase
 
@@ -342,8 +342,8 @@ human_health = 100
         end
 
       if human_health <= 0 
-        puts "Troll won"
-        puts "Would you like to play again?"
+        puts "Troll won",
+             "Would you like to play again?"
         input = gets.chomp
         input_require(input, "y", "n")
         unless input == "y"
@@ -410,8 +410,8 @@ human_health = 100
     end
 
   else
-    puts "You're not very good at directions..."
-    puts "Let's try this again..."
+    puts "You're not very good at directions...",
+         "Let's try this again..."
   end
 end
 
