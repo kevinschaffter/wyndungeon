@@ -1,4 +1,6 @@
+require './game_images.rb'
 require './game_methods.rb'
+include GameMethods
 
 troll_health = 70
 human_health = 100
